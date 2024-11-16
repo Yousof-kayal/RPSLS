@@ -1,6 +1,6 @@
 const hand = ["Rock", "Paper", "Scissors", "Lizard", "Spock"];
-const computerScore = 0;
-const userScore = 0;
+let computerScore = 0;
+let userScore = 0;
 
 /*
 Function that capitalizes the first letter while keeping the rest lowercase.
@@ -26,26 +26,44 @@ function getComputerChoice(min, max){
 User prompt function that returns the user prompt, checking if it is within the hand array for a valid choice
 */
 function getUserChoice(){
-    let userchoice
+    var choice;
     do {
-        userchoice = prompt("Type your choice: [Rock, Paper, Scissors, Lizard, Spock]");
+        choice = prompt("Type your choice: [Rock, Paper, Scissors, Lizard, Spock]");
         
-        if(!hand.includes(title(userchoice))) {
+        if(!hand.includes(title(choice))) {
 
             console.log("Please enter a valid option");
 
         }
 
-    } while (!hand.includes(title(userchoice)))
+    } while (!hand.includes(title(choice)));
     
-    return title(userchoice);
+    return title(choice);
 
     }
 
 /*
-A function that checks for the winner, taking in the computer and user choices
+Game function that runs one round of RPLS by checking if the user's choice is within the computer choice's weaknesses
 */
+function playRound(computerChoice, userChoice){
+    const rules = {
+        Rock: ["Scissors", "Lizard"],
+        Paper: ["Rock", "Spock"],
+        Scissors: ["Paper", "Lizard"],
+        Lizard: ["Spock", "Paper"],
+        Spock: ["Rock", "Scissors"]
+    }
 
+    if (computerChoice === userChoice) return "Tie";
 
-console.log(getComputerChoice(0,4));
-console.log(getUserChoice())
+    return rules[computerChoice].includes(userChoice) ? "Computer Wins" : "User Wins";
+}
+
+let computerChoice = getComputerChoice(0,4);
+let userChoice = getUserChoice();
+
+const result = playRound(computerChoice, userChoice);
+
+console.log(`Computer Hand: ${computerChoice}`);
+console.log(`User Hand: ${userChoice}`);
+console.log(result);
