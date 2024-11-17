@@ -10,7 +10,7 @@ function title(str) {
 }
 
 /*
-Random Number Generator function that returns a number between 1 and 5 corresponsing a string of one of the choices:
+Random Number Generator function that returns a number between 1 and 5 corresponsing the index of one of the choices:
 [Rock, Paper, Scissors, Lizard, Spock]
 */
 function getComputerChoice(min, max){
@@ -30,6 +30,7 @@ function getUserChoice(){
     do {
         choice = prompt("Type your choice: [Rock, Paper, Scissors, Lizard, Spock]");
         
+        // if the prompt is not inside the array "hand", catch error
         if(!hand.includes(title(choice))) {
 
             console.log("Please enter a valid option");
@@ -43,9 +44,10 @@ function getUserChoice(){
     }
 
 /*
-Game function that runs one round of RPLS by checking if the user's choice is within the computer choice's weaknesses
+Round function that runs one round of RPLS by checking if the user's choice is within the computer choice's weaknesses
 */
 function playRound(computerChoice, userChoice){
+    // dictionary to list the strengths of each hand
     const rules = {
         Rock: ["Scissors", "Lizard"],
         Paper: ["Rock", "Spock"],
@@ -54,16 +56,42 @@ function playRound(computerChoice, userChoice){
         Spock: ["Rock", "Scissors"]
     }
 
-    if (computerChoice === userChoice) return "Tie";
+    if (computerChoice === userChoice) return 2;
 
-    return rules[computerChoice].includes(userChoice) ? "Computer Wins" : "User Wins";
+    // if the key value of the computer choice has the user's choice in it, computer wins
+    return rules[computerChoice].includes(userChoice) ? 1 : 0;
 }
 
-let computerChoice = getComputerChoice(0,4);
-let userChoice = getUserChoice();
+/*
+Game function that using a for loop, runs playRound() and appends the scores depending on the result.
+*/
+function playGame(rounds){
+    for (let i = 0; i < rounds; i++){
+        // run choice functions to get each player's current choices
+        let computerChoice = getComputerChoice(0,4);
+        let userChoice = getUserChoice();
 
-const result = playRound(computerChoice, userChoice);
+        console.log(`User Hand: ${userChoice}`);
+        console.log(`Computer Hand: ${computerChoice}`);
+        
+        let result = playRound(computerChoice, userChoice);
+        
+        console.log(`${result == 1 ? "Computer Wins" : "User Wins"}`)
+        if (result == 0){
+            computerScore +=1;
+        }
+        else if (result == 1){
+            userScore +=1;
+        }
+    }
+    // returns result using ternary operation
+    return userScore == computerScore ? "Tie" 
+        : userScore > computerScore ? "User Wins" : "Computer Wins"
+}
 
-console.log(`Computer Hand: ${computerChoice}`);
-console.log(`User Hand: ${userChoice}`);
-console.log(result);
+
+let result = playGame(3)
+console.log(`Computer Score: ${computerScore}`);
+console.log(`User Score: ${userScore}`);
+
+console.log(`In the best out of ${computerScore+userScore}: ${result}`)
