@@ -1,7 +1,8 @@
 # RPSLS
 Rock, Paper, Scissors, Lizard, Spock: An alternative gamemode to Rock, Paper, Scissors. 
-Project 2 of The Odin Project.
+![image](https://github.com/user-attachments/assets/26957101-9393-48c6-aa89-47f3469a5802)
 
+Project 2 of The Odin Project.
 Built with Javascript.
 
 To play:
