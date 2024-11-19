@@ -56,10 +56,10 @@ function playRound(computerChoice, userChoice){
         Spock: ["Rock", "Scissors"]
     }
 
-    if (computerChoice === userChoice) return 2;
+    if (computerChoice === userChoice) return 0;
 
     // if the key value of the computer choice has the user's choice in it, computer wins
-    return rules[computerChoice].includes(userChoice) ? 1 : 0;
+    return rules[computerChoice].includes(userChoice) ? 1 : 2;
 }
 
 /*
@@ -76,12 +76,15 @@ function playGame(rounds){
         
         let result = playRound(computerChoice, userChoice);
         
-        console.log(`${result == 1 ? "Computer Wins" : "User Wins"}`)
-        if (result == 0){
+        console.log(`${result == 0 ? "Tie" : result > 1 ? "User Wins" : "Computer Wins"}`)
+        if (result == 1){
             computerScore +=1;
         }
-        else if (result == 1){
+        else if (result == 2){
             userScore +=1;
+        }
+        else{
+            i-=1; // Add one more round if tied
         }
     }
     // returns result using ternary operation
