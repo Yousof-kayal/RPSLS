@@ -10,20 +10,23 @@ function title(str) {
 }
 
 /*
-Random Number Generator function that returns a number between 1 and 5 corresponsing the index of one of the choices:
+Random Number Generator function that returns 
+a number between 1 and 5 corresponsing the index of one of the choices:
 [Rock, Paper, Scissors, Lizard, Spock]
 */
 function getComputerChoice(min, max){
     const minceil = Math.ceil(min);
     const maxfloor = Math.floor(max);
 
-    const computerchoice = Math.floor(Math.random() * (maxfloor - minceil + 1) + minceil);
+    const computerchoice =
+    Math.floor(Math.random() * (maxfloor - minceil + 1) + minceil);
 
     return title(hand[computerchoice]);
 }
 
 /*
-User prompt function that returns the user prompt, checking if it is within the hand array for a valid choice
+User prompt function that returns the user prompt, 
+checking if it is within the hand array for a valid choice
 */
 function getUserChoice(){
     var choice;
@@ -44,7 +47,8 @@ function getUserChoice(){
     }
 
 /*
-Round function that runs one round of RPLS by checking if the user's choice is within the computer choice's weaknesses
+Round function that runs one round of RPLS by 
+checking if the user's choice is within the computer choice's weaknesses
 */
 function playRound(computerChoice, userChoice){
     // dictionary to list the strengths of each hand
@@ -63,7 +67,8 @@ function playRound(computerChoice, userChoice){
 }
 
 /*
-Game function that using a for loop, runs playRound() and appends the scores depending on the result.
+Game function that using a for loop, 
+runs playRound() and appends the scores depending on the result.
 */
 function playGame(rounds){
     for (let i = 0; i < rounds; i++){
