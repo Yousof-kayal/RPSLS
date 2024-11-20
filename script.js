@@ -33,7 +33,7 @@ function getUserChoice(){
     do {
         choice = prompt("Type your choice: [Rock, Paper, Scissors, Lizard, Spock]");
         
-        // if the prompt is not inside the array "hand", catch error
+        // catch the inputs not within game hands
         if(!hand.includes(title(choice))) {
 
             console.log("Please enter a valid option");
@@ -58,11 +58,11 @@ function playRound(computerChoice, userChoice){
         Scissors: ["Paper", "Lizard"],
         Lizard: ["Spock", "Paper"],
         Spock: ["Rock", "Scissors"]
-    }
-
+    };
+    // catching ties
     if (computerChoice === userChoice) return 0;
 
-    // if the key value of the computer choice has the user's choice in it, computer wins
+    // deciding the winner and sending a value depending on who it is
     return rules[computerChoice].includes(userChoice) ? 1 : 2;
 }
 
@@ -72,7 +72,6 @@ runs playRound() and appends the scores depending on the result.
 */
 function playGame(rounds){
     for (let i = 0; i < rounds; i++){
-        // run choice functions to get each player's current choices
         let computerChoice = getComputerChoice(0,4);
         let userChoice = getUserChoice();
 
@@ -81,7 +80,7 @@ function playGame(rounds){
         
         let result = playRound(computerChoice, userChoice);
         
-        console.log(`${result == 0 ? "Tie" : result > 1 ? "User Wins" : "Computer Wins"}`)
+        console.log(`${result == 0 ? "Tie" : result > 1 ? "User Wins" : "Computer Wins"}`);
         if (result == 1){
             computerScore +=1;
         }
@@ -92,14 +91,14 @@ function playGame(rounds){
             i-=1; // Add one more round if tied
         }
     }
-    // returns result using ternary operation
+    // returns final game result using ternary operation
     return userScore == computerScore ? "Tie" 
-        : userScore > computerScore ? "User Wins" : "Computer Wins"
+        : userScore > computerScore ? "User Wins" : "Computer Wins";
 }
 
 
-let result = playGame(3)
+let result = playGame(3);
 console.log(`Computer Score: ${computerScore}`);
 console.log(`User Score: ${userScore}`);
 
-console.log(`In the best out of ${computerScore+userScore}: ${result}`)
+console.log(`In the best out of ${computerScore+userScore}: ${result}`);
