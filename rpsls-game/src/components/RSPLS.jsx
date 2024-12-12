@@ -90,6 +90,9 @@ const RockPaperScissorsGame = () => {
         <div className="game-header">
           <h1>Rock Paper Scissors Lizard Spock</h1>
         </div>
+        <div className="img-container">
+          <img className="RPSLS" src="../public/RPSLS.webp" width="300" height="200" alt="Chart for the game rules."></img>
+        </div>
         <div className="game-content">
           <div className="score-display">
             <div>

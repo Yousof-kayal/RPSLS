@@ -6,6 +6,18 @@
     font-family: Arial, sans-serif;
   }
   
+  .img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+  }
+
+  .RPSLS{
+    height: auto;
+    max-width: 100%;
+  }
+
   .game-card {
     background: white;
     border-radius: 8px;
