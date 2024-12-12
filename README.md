@@ -3,7 +3,7 @@ Rock, Paper, Scissors, Lizard, Spock: An alternative gamemode to Rock, Paper, Sc
 ![image](https://github.com/user-attachments/assets/26957101-9393-48c6-aa89-47f3469a5802)
 
 Project 2 of The Odin Project.
-Built with Javascript.
+Built with React.
 
 To play:
 1. Clone into your machine
