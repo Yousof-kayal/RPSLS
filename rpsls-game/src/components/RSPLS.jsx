@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
+import rockIcon from '../assets/rock.png'
+import paperIcon from '../assets/paper.png'
+import scissorsIcon from '../assets/scissors.png'
+import lizardIcon from '../assets/lizard.png'
+import spockIcon from '../assets/spock.png'
+import RPSLSChart from '../assets/RPSLS.webp'
 
+const choiceIcons = {
+  Rock: rockIcon,
+  Paper: paperIcon,
+  Scissors: scissorsIcon,
+  Lizard: lizardIcon,
+  Spock: spockIcon
+}
 const RockPaperScissorsGame = () => {
   const hand = ["Rock", "Paper", "Scissors", "Lizard", "Spock"];
   const [computerScore, setComputerScore] = useState(0);
@@ -91,7 +104,7 @@ const RockPaperScissorsGame = () => {
           <h1>Rock Paper Scissors Lizard Spock</h1>
         </div>
         <div className="img-container">
-          <img className="RPSLS" src="../public/RPSLS.webp" width="300" height="200" alt="Chart for the game rules."></img>
+          <img className="RPSLS" src={RPSLSChart} width="300" height="300" alt="Chart for the game rules." />
         </div>
         <div className="game-content">
           <div className="score-display">
@@ -119,7 +132,11 @@ const RockPaperScissorsGame = () => {
                 disabled={gameOver}
                 className="choice-button"
               >
-                {choice}
+                <img 
+                  src={choiceIcons[choice]} 
+                  alt={choice}
+                  className="choice-icon"
+                />
               </button>
             ))}
           </div>
