@@ -2,7 +2,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  font-family: Sans-serif, Arial, Helvetica;
+  font-family: Sans-serif , Helvetica, sans-serif;
 }
 
 .img-container {
@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   padding: 0px;
-  background: #f8f9fa;
+  background: #b8b8b8;
   border-bottom: 1px solid #ffffff;
 }
 
